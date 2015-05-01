@@ -31,5 +31,19 @@ class Array
   end
 
   def stock_picker
+    highest_profit = 0
+    lowest_price_day = 0
+    highest_price_day = 0
+
+    (0...length).each do |i|
+      (i + 1...length).each do |j|
+        if self[j] - self[i] > highest_profit
+          highest_price_day, lowest_price_day = j, i
+          highest_profit = self[j] - self[i]
+        end
+      end
+    end
+
+    [lowest_price_day, highest_price_day]
   end
 end
